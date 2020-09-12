@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend>S&P 500</legend>
+                <div class='form-group'>
+                    {{ form.stock.label(class='form-control-label') }}
+                    {% if form.stock.errors %}
+                        {{ form.stock(class='form-control form-control-lg is-invalid') }}
+                        <div class='invalid-feedback'>
+                            {% for error in form.stock.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.stock(class='form-control form-control-lg') }}
+                    {% endif %}                 
+                </div>
+                <div class='form-group'>
+                    {{ form.forecast_date.label(class='form-control-label') }}
+                    {% if form.forecast_date.errors %}
+                        {{ form.forecast_date(class='form-control form-control-lg is-invalid') }}
+                        <div class='invalid-feedback'>
+                            {% for error in form.forecast_date.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>  
+                    {% else %}
+                        {{ form.forecast_date(class='form-control form-control-lg') }}                          
+                    {% endif %}
+                </div>
+                <div class='form-group'>
+                    {{ form.submit(class='btn btn-outline-info') }}
+                </div>
+            </fieldset>
+        </form>
+    </div>
+{% endblock content %}
